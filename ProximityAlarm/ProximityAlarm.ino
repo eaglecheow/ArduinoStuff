@@ -5,12 +5,14 @@ int ledPin = 35;
 int buzzerPin = 31;
 int sensorInput = A0;
 int switchPin = A1;
+int powerPin = 29;
 
 void setup() 
 {
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
   pinMode(buzzerPin, OUTPUT);
+  pinMode(powerPin, OUTPUT);
 }
 
 void loop() 
@@ -36,8 +38,11 @@ bool SwitchCode()
 
   if (isOn == true)
   {
+    digitalWrite(powerPin, HIGH);
     return true;
   }
+
+  digitalWrite(powerPin, LOW);
   return false;
 }
 
